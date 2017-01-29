@@ -330,3 +330,7 @@
     margin-right: auto;
     /* float: left; */
 }
+
+.more-border {
+	border: 3px black solid;
+}

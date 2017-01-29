@@ -1,5 +1,9 @@
 
-  #wrapper.active {
+  .body{
+      overflow-x: hidden;
+}
+
+#wrapper.active {
   padding-left: 150px;
   }
   #wrapper {
@@ -45,7 +49,7 @@
     border-image: initial;
     border-radius: 4px;
     float: left;
-    width: 48%;
+    width: 31%;
   }
 
 .box-maillon button{
@@ -504,4 +508,7 @@ section#login button {
     width: 100%;
   }
 
+}
+.more-border{
+    border: solid 3px black;
 }
