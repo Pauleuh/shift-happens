@@ -4,6 +4,7 @@
   "description": "PSA - DASHBOARD",
   "dependencies": {
     "express": "^4.10.2",
+    "express3-handlebars": "^0.5.2",
     "handlebars": "^4.0.6",
     "socket.io": "^1.7.2"
   }
