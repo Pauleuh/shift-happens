@@ -332,5 +332,9 @@
 }
 
 .more-border {
-	border: 3px black solid;
+	border: solid 3px black;
+}
+
+.more-border {
+	
 }

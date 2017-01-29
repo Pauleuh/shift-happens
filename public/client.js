@@ -3,6 +3,32 @@
 var socket = io();
 var i;
 
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
 /*** Fonctions utiles ***/
 
 /**
@@ -23,7 +49,7 @@ function scrollToBottom() {
 $('#login form').submit(function (e) {
   e.preventDefault();
   var user = {
-    username : $('#login input').val().trim()
+    username : "1HC2"
   };
   if (user.username.length > 0) { // Si le champ de connexion n'est pas vide
     socket.emit('user-login', user, function (success) {
@@ -54,6 +80,35 @@ $('#chat form').submit(function (e) {
 });
 
 /**
+ * Envoi formulaire
+ */
+
+ $('#form_alert').submit(function (e) {
+  e.preventDefault();
+  var info = {
+    uep : "1HC2",
+    poste: $('input[name=optradio]:checked').val(),
+    duree: $('input[name=time]:checked').val(),
+    commentaire: $('#commentaire').val()
+  };
+    $('#commentaire').val('');
+    console.log(info);
+    modal.style.display = "none";
+  	$("#led_1HC2").attr('class', 'led-red');
+  	$("#hide_btn").css('display', '');
+  // if (message.text.trim().length !== 0) { // Gestion message vide
+  //   socket.emit('chat-message', message);
+  // }
+
+  // $('#chat input').focus(); // Focus sur le champ du message
+});
+
+ $( "#btn_green" ).click(function() {
+  $("#led_1HC2").attr('class', 'led-green');
+  $( "#hide_btn" ).css('display', 'none');
+});
+
+/**
  * Réception d'un message
  */
 socket.on('chat-message', function (message) {
@@ -64,6 +119,7 @@ socket.on('chat-message', function (message) {
 	console.log(message.log[i]);
 		if(message.person == message.log[i].username){
   			$('#messages').append($('<li>').html('<span class="username">' + message.username + '</span> ' + message.text));
+  			break;
 		} else {
 	  		$('#messages').append($('<li class="logout">').html('<span class="info">Error</span> Invalid User'));
 	  		break;
