@@ -425,10 +425,10 @@ section#chat #messages li:nth-child(odd) {
     background: #eee;
 }
 section#chat #messages li.logout {
-	background: #E5A6A6;
+	background: #f5f5f5;
 }
 section#chat #messages li.login {
-	background: #A8E5A6;
+	background: #c0c0c0;
 }
 section#chat #messages li span.username {
 	display: inline-block;
@@ -571,4 +571,16 @@ section#login button {
 
 .more-border{
     border: solid 3px black;
+}
+
+.btn{
+    color: black;
+}
+
+#poste{
+        margin-right: 10px;
+}
+
+#duree{
+    margin-right: 10px;
 }
