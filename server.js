@@ -136,17 +136,20 @@ io.on('connection', function (socket) {
   /**
    * Connexion d'un utilisateur via le formulaire :
    */
-  socket.on('user-login', function (user, callback) {
+  // socket.on('user-login', function (user, callback) {
     // Vérification que l'utilisateur n'existe pas
-    var userIndex = -1;
-    for (i = 0; i < users.length; i++) {
-      if (users[i].username === user.username) {
-        userIndex = i;
-      }
-    }
-    if (user !== undefined && userIndex === -1) { // S'il est bien nouveau
+    // var userIndex = -1;
+    // for (i = 0; i < users.length; i++) {
+    //   if (users[i].username === user.username) {
+    //     userIndex = i;
+    //   }
+    // }
+    // if (user !== undefined && userIndex === -1) { // S'il est bien nouveau
       // Sauvegarde de l'utilisateur et ajout à la liste des connectés
-      loggedUser = user;
+    // console.log(user);
+      loggedUser = {
+        username : "1HC2"
+      };
       users.push(loggedUser);
       // Envoi et sauvegarde des messages de service
       var userServiceMessage = {
@@ -162,17 +165,20 @@ io.on('connection', function (socket) {
       messages.push(broadcastedServiceMessage);
       // Emission de 'user-login' et appel du callback
       io.emit('user-login', loggedUser);
-      callback(true);
-    } else {
-      callback(false);
-    }
-  });
+  //     callback(true);
+  //   } else {
+  //     callback(false);
+  //   }
+  // });
 
   /**
    * Réception de l'événement 'chat-message' et réémission vers tous les utilisateurs
    */
   socket.on('chat-message', function (message) {
     // On ajoute le username au message et on émet l'événement
+      loggedUser = {
+        username : "1HC2"
+      };
     message.username = loggedUser.username;
     message.log = users;
     io.emit('chat-message', message);
